@@ -1,57 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import { Grid, Link, styled, Typography } from "@mui/material";
+import React from "react";
+import { SevenDaysForecastContainer } from "./components/SevenDaysForecastContainer/SevenDaysForecastContainer";
+import { AddressSearch } from "./components/AddressSearch/AddressSearch";
+
+const TitleGridItem = styled(Grid)(({ theme }) => ({
+  marginTop: theme.spacing(8),
+  marginBottom: theme.spacing(2),
+}));
+
+const ForecastGridItem = styled(Grid)(({ theme }) => ({
+  marginTop: theme.spacing(4),
+}));
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
+    <Grid container alignItems={"center"} direction={"column"} spacing={4}>
+      <TitleGridItem item>
+        <Typography variant={"h1"}>Address Forecast</Typography>
+      </TitleGridItem>
+      <Grid item>
+        {" "}
+        <Typography variant={"subtitle1"}>
+          Get the 7-days forecast from the{" "}
+          <Link
+            href={"https://www.weather.gov/"}
+            target={"_blank"}
+            rel={"noreferrer"}
           >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+            National Weather Service
+          </Link>
+        </Typography>
+      </Grid>
+      <Grid item>
+        <AddressSearch />
+      </Grid>
+      <ForecastGridItem item>
+        <SevenDaysForecastContainer />
+      </ForecastGridItem>
+    </Grid>
   );
 }
 
