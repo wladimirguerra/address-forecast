@@ -15,7 +15,7 @@ import {
 
 export interface ForecastSliceState {
   addresses: GeocodeAddress[];
-  selectedAddress?: GeocodeAddress;
+  selectedAddress?: GeocodeAddress | null | undefined;
   fetchingAddresses?: boolean;
   addressFetchError?: boolean;
   /**
@@ -38,28 +38,29 @@ export const fetchAddresses = createAsyncThunk(
 
 export const fetchForecast = createAsyncThunk<
   Forecast,
-  GeocodeCoordinate,
+  GeocodeAddress | null,
   { state: RootState }
->(
-  "forecast/fetchForecast",
-  async (coordinates: GeocodeCoordinate, thunkAPI) => {
-    const { dispatch, getState } = thunkAPI;
-    let grid = getState().forecast.forecastGrids.find(
-      (forecastGrid) =>
-        forecastGrid.latitude === coordinates.y &&
-        forecastGrid.longitude === coordinates.x
-    );
+>("forecast/fetchForecast", async (address, thunkAPI) => {
+  const { dispatch, getState } = thunkAPI;
+  dispatch(selectAddress(address));
+  if (!address) return {} as Forecast;
 
-    if (!grid) {
-      // Cache forecast grid to speed up next query to the same
-      // coordinates
-      grid = await getForecastGrid(coordinates);
-      dispatch(addForecastGrid(grid));
-    }
+  const coordinates: GeocodeCoordinate = address.coordinates;
+  let grid = getState().forecast.forecastGrids.find(
+    (forecastGrid) =>
+      forecastGrid.latitude === coordinates.y &&
+      forecastGrid.longitude === coordinates.x
+  );
 
-    return getForecast(grid);
+  if (!grid) {
+    // Cache forecast grid to speed up next query to the same
+    // coordinates
+    grid = await getForecastGrid(coordinates);
+    dispatch(addForecastGrid(grid));
   }
-);
+
+  return getForecast(grid);
+});
 
 export const forecastSliceSlice = createSlice({
   name: "forecastSlice",
@@ -68,7 +69,10 @@ export const forecastSliceSlice = createSlice({
     forecastGrids: [],
   } as ForecastSliceState,
   reducers: {
-    selectAddress: (state, action: PayloadAction<GeocodeAddress>) => {
+    selectAddress: (
+      state,
+      action: PayloadAction<GeocodeAddress | null | undefined>
+    ) => {
       state.selectedAddress = action.payload;
     },
     addForecastGrid: (state, action: PayloadAction<ForecastGrid>) => {
@@ -81,12 +85,13 @@ export const forecastSliceSlice = createSlice({
       state.addressFetchError = true;
     });
     builder.addCase(fetchAddresses.fulfilled, (state, action) => {
-      state.fetchingAddresses = false;
       state.addresses = action.payload;
+      state.fetchingAddresses = false;
     });
-    builder.addCase(fetchAddresses.rejected, (state) => {
+    builder.addCase(fetchAddresses.rejected, (state, action) => {
       state.addressFetchError = true;
       state.fetchingAddresses = false;
+      console.error(action.error);
     });
     builder.addCase(fetchForecast.pending, (state) => {
       state.fetchingForecast = true;
@@ -96,9 +101,10 @@ export const forecastSliceSlice = createSlice({
       state.fetchingForecast = false;
       state.selectedAddressForecast = action.payload;
     });
-    builder.addCase(fetchForecast.rejected, (state) => {
+    builder.addCase(fetchForecast.rejected, (state, action) => {
       state.forecastFetchError = true;
       state.fetchingForecast = false;
+      console.error(action.error);
     });
   },
 });
@@ -107,6 +113,11 @@ export const forecastSliceSlice = createSlice({
 export const fetchingAddressesSelector = (state: RootState) =>
   state.forecast.fetchingAddresses;
 export const addressesSelector = (state: RootState) => state.forecast.addresses;
+export const forecastPeriodsSelector = (state: RootState) =>
+  state.forecast.selectedAddressForecast?.properties?.periods;
+export const selectedAddressSelector = (state: RootState) =>
+  state.forecast.selectedAddress;
+
 export const { selectAddress, addForecastGrid } = forecastSliceSlice.actions;
 
 export default forecastSliceSlice.reducer;

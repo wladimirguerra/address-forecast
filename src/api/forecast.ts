@@ -17,9 +17,10 @@ export interface Period {
   name: string;
   startTime: Date;
   endTime: Date;
-  isDayTime: boolean;
+  isDaytime: boolean;
   temperature: number;
   temperatureUnit: string;
+  temperatureTrend: number | null;
   windSpeed: string;
   windDirection: string;
   icon: string;

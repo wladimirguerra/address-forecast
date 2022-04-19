@@ -1,23 +1,37 @@
 import { Box, styled } from "@mui/material";
 import * as React from "react";
-import { ForecastPanel } from "../ForecastPanel/ForecastPanel";
+import { ForecastPanel } from "./components/ForecastPanel";
+import { Period } from "../../api/forecast";
+import { ForecastPeriodProvider } from "./provider/ForecastPeriodProvider";
+import { useMemo } from "react";
 
-export interface DayForecastPanelProps {}
+export interface DayForecastPanelProps {
+  /**
+   * An array of two periods
+   */
+  forecastPeriods: Period[];
+}
 
-const ForecastDayPanel = styled(Box)({
+const ForecastDayPanel = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "single",
+})<{ single?: boolean }>(({ single }) => ({
   "& > :not(style)": {
     width: 220,
-    height: 250,
+    height: single ? 500 : 250,
   },
-});
+}));
 
 export const DayForecastPanel: React.FC<DayForecastPanelProps> = (props) => {
-  const {} = props;
+  const { forecastPeriods } = props;
+  const single = useMemo(() => forecastPeriods.length === 1, [forecastPeriods]);
 
   return (
-    <ForecastDayPanel>
-      <ForecastPanel day></ForecastPanel>
-      <ForecastPanel></ForecastPanel>
+    <ForecastDayPanel single={single}>
+      {forecastPeriods?.map((period) => (
+        <ForecastPeriodProvider key={period.number} value={period}>
+          <ForecastPanel single={single} />
+        </ForecastPeriodProvider>
+      ))}
     </ForecastDayPanel>
   );
 };
