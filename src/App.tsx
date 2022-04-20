@@ -2,6 +2,7 @@ import { Grid, Link, styled, Typography } from "@mui/material";
 import React from "react";
 import { SevenDaysForecastContainer } from "./components/SevenDaysForecastContainer/SevenDaysForecastContainer";
 import { AddressSearch } from "./components/AddressSearch/AddressSearch";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 
 const TitleGridItem = styled(Grid)(({ theme }) => ({
   marginTop: theme.spacing(8),
@@ -32,10 +33,14 @@ function App() {
         </Typography>
       </Grid>
       <Grid item>
-        <AddressSearch />
+        <ErrorBoundary fallback={null}>
+          <AddressSearch />
+        </ErrorBoundary>
       </Grid>
       <ForecastGridItem item>
-        <SevenDaysForecastContainer />
+        <ErrorBoundary fallback={null}>
+          <SevenDaysForecastContainer />
+        </ErrorBoundary>
       </ForecastGridItem>
     </Grid>
   );

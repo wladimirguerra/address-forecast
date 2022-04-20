@@ -18,6 +18,7 @@ const ForecastDayPanel = styled(Box, {
   "& > :not(style)": {
     width: 220,
     height: single ? 500 : 250,
+    boxSizing: "border-box",
   },
 }));
 

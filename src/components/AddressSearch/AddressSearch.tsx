@@ -24,16 +24,15 @@ export const AddressSearch: React.FC<AddressSearchProps> = (props) => {
   const {} = props;
   const fetchingAddresses = useAppSelector(fetchingAddressesSelector);
   const addresses = useAppSelector(addressesSelector);
-  const [addressQuery, setAddressQuery] = useState(
-    "4600 Silver Hill Rd, Washington, DC 20233"
-  );
+  const [addressQuery, setAddressQuery] = useState("");
   const [address] = useDebounce(addressQuery, 1000);
   const [open, setOpen] = useState(false);
   const dispatch = useAppDispatch();
   const selectedAddress = useAppSelector(selectedAddressSelector);
 
   useEffect(() => {
-    if (address.trim()) dispatch(fetchAddresses(address));
+    if (address.trim() && address !== selectedAddress?.matchedAddress)
+      dispatch(fetchAddresses(address));
   }, [address]);
 
   const handleChange = (event: any, newValue: GeocodeAddress | null) => {
@@ -43,7 +42,7 @@ export const AddressSearch: React.FC<AddressSearchProps> = (props) => {
   return (
     <Autocomplete<GeocodeAddress>
       id="asynchronous-demo"
-      sx={{ width: 300 }}
+      sx={{ width: 500 }}
       open={open}
       onOpen={() => {
         setOpen(true);
@@ -54,9 +53,14 @@ export const AddressSearch: React.FC<AddressSearchProps> = (props) => {
       isOptionEqualToValue={(option, value) =>
         option.matchedAddress === value.matchedAddress
       }
-      value={selectedAddress}
+      value={
+        selectedAddress ?? {
+          matchedAddress: "",
+          coordinates: { x: Infinity, y: Infinity },
+        }
+      }
       onChange={handleChange}
-      inputValue={addressQuery}
+      inputValue={addressQuery ?? ""}
       onInputChange={(event, newValue) => setAddressQuery(newValue)}
       getOptionLabel={(option) => option.matchedAddress}
       options={addresses}

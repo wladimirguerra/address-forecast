@@ -1,0 +1,214 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DayForecastPanel match snapshot 1`] = `
+<div
+  className="MuiBox-root css-2afwwr"
+>
+  <div
+    className="MuiBox-root css-rxr5tt"
+  >
+    <h6
+      className="MuiTypography-root MuiTypography-subtitle2 css-ipucqy-MuiTypography-root"
+    >
+      Sunday
+    </h6>
+    <h3
+      className="MuiTypography-root MuiTypography-h3 css-15x5pj-MuiTypography-root"
+    >
+      53
+      ˚
+      F
+    </h3>
+    <p
+      className="MuiTypography-root MuiTypography-body2 MuiTypography-noWrap css-1je1gpf-MuiTypography-root"
+    >
+      Sunny
+    </p>
+    <div
+      className="MuiBox-root css-6817cj"
+    />
+    <div
+      className="MuiBox-root css-j0ozid"
+    >
+      <div
+        aria-label="Wind speed"
+        aria-labelledby={null}
+        className="MuiBox-root css-axw7ok"
+        data-mui-internal-clone-element={true}
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+        onTouchEnd={[Function]}
+        onTouchStart={[Function]}
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1ekxpud-MuiSvgIcon-root"
+          data-testid="AirIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M14.5 17c0 1.65-1.35 3-3 3s-3-1.35-3-3h2c0 .55.45 1 1 1s1-.45 1-1-.45-1-1-1H2v-2h9.5c1.65 0 3 1.35 3 3zM19 6.5C19 4.57 17.43 3 15.5 3S12 4.57 12 6.5h2c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5S16.33 8 15.5 8H2v2h13.5c1.93 0 3.5-1.57 3.5-3.5zm-.5 4.5H2v2h16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5v2c1.93 0 3.5-1.57 3.5-3.5S20.43 11 18.5 11z"
+          />
+        </svg>
+        <p
+          className="MuiTypography-root MuiTypography-body2 css-6tvyg3-MuiTypography-root"
+        >
+          10 to 21 mph
+        </p>
+      </div>
+      <div
+        aria-label="Wind direction"
+        aria-labelledby={null}
+        className="MuiBox-root css-axw7ok"
+        data-mui-internal-clone-element={true}
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+        onTouchEnd={[Function]}
+        onTouchStart={[Function]}
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall css-jyhbzt-MuiSvgIcon-root"
+          data-testid="ExploreOutlinedIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5.5-2.5 7.51-3.49L17.5 6.5 9.99 9.99 6.5 17.5zm5.5-6.6c.61 0 1.1.49 1.1 1.1s-.49 1.1-1.1 1.1-1.1-.49-1.1-1.1.49-1.1 1.1-1.1z"
+          />
+        </svg>
+        <p
+          className="MuiTypography-root MuiTypography-body2 css-6tvyg3-MuiTypography-root"
+        >
+          W
+        </p>
+      </div>
+    </div>
+    <div
+      className="MuiBox-root css-6817cj"
+    />
+    <p
+      aria-label="Sunny, with a high near 53. West wind 10 to 21 mph, with gusts as high as 26 mph."
+      aria-labelledby={null}
+      className="MuiTypography-root MuiTypography-body1  css-6pegx6-MuiTypography-root"
+      data-mui-internal-clone-element={true}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+    >
+      Sunny, with a high near 53. West wind 10 to 21 mph, with gusts as high as 26 mph.
+    </p>
+  </div>
+  <div
+    className="MuiBox-root css-ch4115"
+  >
+    <h6
+      className="MuiTypography-root MuiTypography-subtitle2 css-1unr6er-MuiTypography-root"
+    >
+      Sunday Night
+    </h6>
+    <h3
+      className="MuiTypography-root MuiTypography-h3 css-n3zwl4-MuiTypography-root"
+    >
+      47
+      ˚
+      F
+    </h3>
+    <p
+      className="MuiTypography-root MuiTypography-body2 MuiTypography-noWrap css-j1j11x-MuiTypography-root"
+    >
+      Mostly Clear
+    </p>
+    <div
+      className="MuiBox-root css-6817cj"
+    />
+    <div
+      className="MuiBox-root css-j0ozid"
+    >
+      <div
+        aria-label="Wind speed"
+        aria-labelledby={null}
+        className="MuiBox-root css-axw7ok"
+        data-mui-internal-clone-element={true}
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+        onTouchEnd={[Function]}
+        onTouchStart={[Function]}
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1d159sf-MuiSvgIcon-root"
+          data-testid="AirIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M14.5 17c0 1.65-1.35 3-3 3s-3-1.35-3-3h2c0 .55.45 1 1 1s1-.45 1-1-.45-1-1-1H2v-2h9.5c1.65 0 3 1.35 3 3zM19 6.5C19 4.57 17.43 3 15.5 3S12 4.57 12 6.5h2c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5S16.33 8 15.5 8H2v2h13.5c1.93 0 3.5-1.57 3.5-3.5zm-.5 4.5H2v2h16.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5v2c1.93 0 3.5-1.57 3.5-3.5S20.43 11 18.5 11z"
+          />
+        </svg>
+        <p
+          className="MuiTypography-root MuiTypography-body2 css-1xrqxqi-MuiTypography-root"
+        >
+          3 to 20 mph
+        </p>
+      </div>
+      <div
+        aria-label="Wind direction"
+        aria-labelledby={null}
+        className="MuiBox-root css-axw7ok"
+        data-mui-internal-clone-element={true}
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onMouseLeave={[Function]}
+        onMouseOver={[Function]}
+        onTouchEnd={[Function]}
+        onTouchStart={[Function]}
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall css-1p2xeaz-MuiSvgIcon-root"
+          data-testid="ExploreOutlinedIcon"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5.5-2.5 7.51-3.49L17.5 6.5 9.99 9.99 6.5 17.5zm5.5-6.6c.61 0 1.1.49 1.1 1.1s-.49 1.1-1.1 1.1-1.1-.49-1.1-1.1.49-1.1 1.1-1.1z"
+          />
+        </svg>
+        <p
+          className="MuiTypography-root MuiTypography-body2 css-1xrqxqi-MuiTypography-root"
+        >
+          W
+        </p>
+      </div>
+    </div>
+    <div
+      className="MuiBox-root css-6817cj"
+    />
+    <p
+      aria-label="Mostly clear, with a low around 47. West wind 3 to 20 mph, with gusts as high as 25 mph."
+      aria-labelledby={null}
+      className="MuiTypography-root MuiTypography-body1  css-141qvt8-MuiTypography-root"
+      data-mui-internal-clone-element={true}
+      onBlur={[Function]}
+      onFocus={[Function]}
+      onMouseLeave={[Function]}
+      onMouseOver={[Function]}
+      onTouchEnd={[Function]}
+      onTouchStart={[Function]}
+    >
+      Mostly clear, with a low around 47. West wind 3 to 20 mph, with gusts as high as 25 mph.
+    </p>
+  </div>
+</div>
+`;
