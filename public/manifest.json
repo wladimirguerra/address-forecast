@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Address Forecast",
+  "name": "7-days Address Forecast",
   "icons": [
     {
       "src": "favicon.ico",

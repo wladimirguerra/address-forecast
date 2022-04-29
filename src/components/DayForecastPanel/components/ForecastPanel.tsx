@@ -44,6 +44,7 @@ const PanelTypography = styled(Typography, {
   shouldForwardProp: (prop) => prop !== "day",
 })<{ day?: boolean }>(({ day, theme }) => ({
   color: day ? theme.palette.text.primary : "white",
+  lineHeight: 1.2,
 }));
 
 export const ForecastPanel: React.FC<ForecastPanelContentProps> = (props) => {
@@ -71,11 +72,11 @@ export const ForecastPanel: React.FC<ForecastPanelContentProps> = (props) => {
         {shortForecast}
       </PanelTypography>
       <Spacer />
-      <Box display={"flex"} alignItems={"center"} gap={2}>
+      <Box display={"flex"} alignItems={"center"} flexWrap={"nowrap"} gap={2}>
         <Tooltip title={"Wind speed"}>
           <Box display={"flex"} alignItems={"center"} gap={1}>
             <Air sx={{ color: isDaytime ? "inherit" : "white" }} />
-            <PanelTypography day={isDaytime} variant={"body2"}>
+            <PanelTypography day={isDaytime} variant={"body2"} noWrap>
               {windSpeed}
             </PanelTypography>
           </Box>
