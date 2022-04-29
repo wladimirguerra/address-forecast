@@ -31,7 +31,7 @@ export const AddressSearch: React.FC<AddressSearchProps> = (props) => {
   const selectedAddress = useAppSelector(selectedAddressSelector);
 
   useEffect(() => {
-    if (address.trim() && address !== selectedAddress?.matchedAddress)
+    if (!!address.trim() && address !== selectedAddress?.matchedAddress)
       dispatch(fetchAddresses(address));
   }, [address]);
 
@@ -53,14 +53,10 @@ export const AddressSearch: React.FC<AddressSearchProps> = (props) => {
       isOptionEqualToValue={(option, value) =>
         option.matchedAddress === value.matchedAddress
       }
-      value={
-        selectedAddress ?? {
-          matchedAddress: "",
-          coordinates: { x: Infinity, y: Infinity },
-        }
-      }
+      value={selectedAddress ?? null}
       onChange={handleChange}
       inputValue={addressQuery ?? ""}
+      filterOptions={(x) => x}
       onInputChange={(event, newValue) => setAddressQuery(newValue)}
       getOptionLabel={(option) => option.matchedAddress}
       options={addresses}

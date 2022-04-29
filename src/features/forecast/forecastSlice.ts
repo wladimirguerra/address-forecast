@@ -32,7 +32,7 @@ export const fetchAddresses = createAsyncThunk(
   "forecast/fetchAddresses",
   async (address: string) => {
     const geocodeResult: GeocodeResult = await getGeocode(address);
-    return geocodeResult.result.addressMatches;
+    return geocodeResult.result.addressMatches ?? [];
   }
 );
 
